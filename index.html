@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Culture Générale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page-container">
+        <div id="player-form" class="container animate__animated animate__fadeIn">
+            <div class="quiz-header">
+                <div class="quiz-logo">👋</div>
+                <div class="header-actions">
+                    <button id="view-highscores" class="secondary-button">
+                        <span class="button-icon">🏆</span>
+                        <span class="button-text">High Scores</span>
+                    </button>
+                </div>
+                <h1>Bienvenue au Quiz</h1>
+                <p class="quiz-subtitle">Entrez votre nom et choisissez un thème</p>
+            </div>
+            <div class="player-input-container">
+                <input type="text" id="player-name" placeholder="Votre nom" required>
+                <div class="error-message" id="name-error">
+                    <span class="error-icon">⚠️</span>
+                    <span class="error-text">Veuillez entrer votre nom pour commencer</span>
+                </div>
+                <div class="quiz-selection">
+                    <h3>Choisissez votre thème</h3>
+                    <div id="quiz-themes" class="quiz-themes-grid">
+                    </div>
+                    <div class="error-message" id="theme-error">
+                        <span class="error-icon">⚠️</span>
+                        <span class="error-text">Veuillez sélectionner un thème</span>
+                    </div>
+                </div>
+                <button id="start-quiz" class="primary-button">
+                    <span class="button-text">Commencer le Quiz</span>
+                    <span class="button-icon">→</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="container" id="quiz-container" style="display: none;">
+            <div id="quiz" class="animate__animated animate__fadeIn">
+                <div class="quiz-header">
+                    <div class="quiz-logo">🎯</div>
+                    <div class="header-actions">
+                        <button id="view-highscores" class="secondary-button">
+                            <span class="button-icon">🏆</span>
+                            <span class="button-text">High Scores</span>
+                        </button>
+                    </div>
+                    <h1>Quiz Culture Générale</h1>
+                    <p class="quiz-subtitle">Testez vos connaissances</p>
+                </div>
+
+                <div id="progress-container">
+                    <div class="progress-info">
+                        <span class="progress-status">Question <span id="current-question">1</span> sur 20</span>
+                        <span class="progress-percentage" id="progress-text">0%</span>
+                    </div>
+                    <div id="progress-bar">
+                        <div id="progress"></div>
+                    </div>
+                </div>
+
+                <div id="question-container" class="animate__animated animate__fadeIn">
+                    <div class="question-number">Question <span id="current-question-number">1</span></div>
+                    <h2 id="question"></h2>
+                    <div id="choices"></div>
+                </div>
+
+                <button id="submit-btn" class="primary-button">
+                    <span class="button-text">Valider ma réponse</span>
+                    <span class="button-icon">→</span>
+                </button>
+            </div>
+
+            <div id="results" class="animate__animated animate__fadeIn" style="display: none;">
+                <div class="results-header">
+                    <div class="results-logo"></div>
+                    <h2>Résultats du Quiz</h2>
+                    <p class="results-subtitle">Voici votre performance</p>
+                </div>
+
+                <div class="score-container animate__animated animate__fadeInUp">
+                    <div class="score-circle-wrapper">
+                        <div class="score-circle">
+                            <div id="score"></div>
+                        </div>
+                        <svg class="score-svg">
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#667eea" />
+                                    <stop offset="100%" stop-color="#764ba2" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="score-circle-bg" cx="75" cy="75" r="70"></circle>
+                            <circle class="score-circle-progress" cx="75" cy="75" r="70"></circle>
+                        </svg>
+                    </div>
+                    <div class="score-details">
+                        <div class="score-label">Score final</div>
+                        <div class="score-message" id="score-message"></div>
+                    </div>
+                </div>
+
+                <div class="answers-container">
+                    <h3>Détail des réponses</h3>
+                    <div id="answers-review"></div>
+                </div>
+
+                <button id="restart-btn" class="primary-button">
+                    <span class="button-text">Retourner au menu</span>
+                    <span class="button-icon">↺</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="highscores-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏆 Meilleurs Scores</h2>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-highscores-container" class="highscores-container">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="highscores.js"></script>
+</body>
+
+</html>
